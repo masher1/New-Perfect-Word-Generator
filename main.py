@@ -21,8 +21,13 @@ def newWordGenerator():
         newWord += alphabet[newChar]
     return newWord
 
-
-while(1):
+wordsList = []
+sample = open('output.txt', 'w')
+while 1:
     word = newWordGenerator()
-    if(dictionary.check(word)):
-        print("Is", word, "a real Word? ", dictionary.check(word))
+    if dictionary.check(word):
+        if word not in wordsList:
+            wordsList.append(word)
+            print("Is", word, "a real word? ", dictionary.check(word), file=sample)
+
+sample.close()
